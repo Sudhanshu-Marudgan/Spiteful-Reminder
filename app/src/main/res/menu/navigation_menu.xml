@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/it1"
+            android:icon="@drawable/all"
+            android:title="  All"
+            />
+
+        <item
+            android:id="@+id/it2"
+            android:icon="@drawable/completed"
+            android:title="  Completed"
+            />
+
+        <item
+            android:id="@+id/it3"
+            android:icon="@drawable/settings"
+            android:title="  Settings"
+            />
+    </group>
+
+    <item
+        android:id="@+id/it4"
+        android:title="Category"
+        />
+
+</menu>
