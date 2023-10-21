@@ -14,7 +14,7 @@
         android:textSize="35sp"
         android:textColor="@color/white"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="100dp"
         />
 
 
