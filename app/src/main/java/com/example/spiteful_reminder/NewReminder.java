@@ -28,8 +28,6 @@ import org.w3c.dom.Text;
 public class NewReminder extends AppCompatActivity {
 
     public static String memo,date,time;
-    Switch sw1 = (Switch) findViewById(R.id.sw1);
-    Switch sw2 = (Switch) findViewById(R.id.sw2);
     FirebaseDatabase db;
     DatabaseReference reference;
 
@@ -52,6 +50,7 @@ public class NewReminder extends AppCompatActivity {
     }
 
     public void time (View view){
+        Switch sw1 = (Switch) findViewById(R.id.sw1);
         if(sw1.isChecked()){
             Calendar mcurrentTime = Calendar.getInstance();
             int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
@@ -68,6 +67,7 @@ public class NewReminder extends AppCompatActivity {
     }
 
     public void date (View view){
+        Switch sw2 = (Switch) findViewById(R.id.sw2);
         if(sw2.isChecked()){
             Calendar mcurrentDate = Calendar.getInstance();
             int mYear = mcurrentDate.get(Calendar.YEAR);
@@ -97,6 +97,8 @@ public class NewReminder extends AppCompatActivity {
     }
 
     public void save (View view){
+        Switch sw1 = (Switch) findViewById(R.id.sw1);
+        Switch sw2 = (Switch) findViewById(R.id.sw2);
         EditText ed1 = (EditText) findViewById(R.id.ed1);
         memo = ed1.getText().toString();
         if(memo.length()==0){
@@ -124,6 +126,8 @@ public class NewReminder extends AppCompatActivity {
                 }
             });
             Toast.makeText(this, "Reminder Added!", Toast.LENGTH_SHORT).show();
+            Intent i = new Intent(NewReminder.this,MainActivity.class);
+            startActivity(i);
         }
     }
 }

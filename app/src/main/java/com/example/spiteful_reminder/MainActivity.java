@@ -23,8 +23,8 @@ public class MainActivity extends AppCompatActivity {
         //Code to make the status bar black (End)
     }
 
-    public void newreminder(View view){
-        Intent i = new Intent(MainActivity.this, NewReminder.class);
-        startActivity(i);
+    public void addreminder(View view){
+        Intent j = new Intent(MainActivity.this, NewReminder.class);
+        startActivity(j);
     }
 }
