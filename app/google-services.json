@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "591202428918",
+    "project_id": "spiteful-reminder",
+    "storage_bucket": "spiteful-reminder.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:591202428918:android:378e1487f13050223409d7",
+        "android_client_info": {
+          "package_name": "com.example.spiteful_reminder"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIe4Z4dWIQthsSdVi1woqaazopiMk4a6c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

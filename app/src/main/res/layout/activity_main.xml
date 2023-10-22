@@ -35,7 +35,9 @@
         android:layout_marginTop="220dp"
         android:background="@color/black"
         android:text="+"
-        android:textSize="60px" />
+        android:textSize="60px"
+        android:onClick="newreminder"
+        />
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchView"

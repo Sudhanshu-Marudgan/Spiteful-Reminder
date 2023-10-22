@@ -2,7 +2,9 @@ package com.example.spiteful_reminder;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
@@ -19,5 +21,10 @@ public class MainActivity extends AppCompatActivity {
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         window.setStatusBarColor(this.getResources().getColor(R.color.black));
         //Code to make the status bar black (End)
+    }
+
+    public void newreminder(View view){
+        Intent i = new Intent(MainActivity.this, NewReminder.class);
+        startActivity(i);
     }
 }
