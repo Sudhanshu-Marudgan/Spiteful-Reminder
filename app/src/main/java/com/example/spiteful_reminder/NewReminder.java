@@ -3,9 +3,12 @@ package com.example.spiteful_reminder;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlarmManager;
 import android.app.DatePickerDialog;
+import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.icu.text.SimpleDateFormat;
 import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.view.View;
@@ -25,14 +28,15 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import org.w3c.dom.Text;
 
+import java.text.ParseException;
+import java.util.Date;
+
 public class NewReminder extends AppCompatActivity {
 
     public static String memo,date,time;
+    public static int hrs,min;
     FirebaseDatabase db;
     DatabaseReference reference;
-
-
-
 
 
     @Override
@@ -59,6 +63,8 @@ public class NewReminder extends AppCompatActivity {
             mTimePicker = new TimePickerDialog(NewReminder.this, new TimePickerDialog.OnTimeSetListener() {
                 @Override
                 public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                    hrs = selectedHour;
+                    min = selectedMinute;
                     time = selectedHour + ":" + selectedMinute;
                 }
             }, hour, minute, true);//Yes 24 hour time
@@ -79,7 +85,7 @@ public class NewReminder extends AppCompatActivity {
                 public void onDateSet(DatePicker datepicker, int selectedyear, int selectedmonth, int selectedday) {
                     /*      Your code   to get date and time    */
                     selectedmonth = selectedmonth + 1;
-                date="" + selectedday + "/" + selectedmonth + "/" + selectedyear;
+                date=selectedday + "/" + selectedmonth + "/" + selectedyear;
                 }
             }, mYear, mMonth, mDay);
             mDatePicker.show();
@@ -113,21 +119,68 @@ public class NewReminder extends AppCompatActivity {
             sw2.requestFocus();
             sw2.setError("This field cannot be empty1");
         }
-        else{
-            helper uh = new helper(memo,time,date);
-            db=FirebaseDatabase.getInstance();
-            reference = db.getReference("helper");
-            reference.child(memo).setValue(uh).addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull Task<Void> task) {
-                    memo = "";
-                    time = "";
-                    date = "";
-                }
-            });
-            Toast.makeText(this, "Reminder Added!", Toast.LENGTH_SHORT).show();
-            Intent i = new Intent(NewReminder.this,MainActivity.class);
-            startActivity(i);
+        helper uh = new helper(memo,time,date);
+        db=FirebaseDatabase.getInstance();
+        reference = db.getReference("helper");
+        reference.child(memo).setValue(uh).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                Toast.makeText(NewReminder.this, "Reminder Added!", Toast.LENGTH_SHORT).show();
+                scheduleNotification(memo, date, time);
+                memo = "";
+                time = "";
+                date = "";
+                Intent i = new Intent(NewReminder.this,MainActivity.class);
+                startActivity(i);
+            }
+        });
+    }
+
+//    private void scheduleNotification(String memo, String date, String time) {
+//        // Parse date and time strings to create a Calendar object
+//        Calendar calendar = Calendar.getInstance();
+//        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+//        try {
+//            Date dateTime = dateFormat.parse(date + " " + time);
+//            calendar.setTime(dateTime);
+//
+//            // Use AlarmManager to schedule the notification
+//            AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+//            Intent notificationIntent = new Intent(this, NotificationReceiver.class);
+//            notificationIntent.putExtra("memo", memo); // Pass the memo to the receiver
+//            PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, notificationIntent, PendingIntent.FLAG_IMMUTABLE);
+//            alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
+//    }
+
+    private void scheduleNotification(String memo, String date, String time) {
+        // Parse date and time strings to create a Calendar object
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+        try {
+            Date dateTime = dateFormat.parse(NewReminder.date + " " + NewReminder.time);
+            calendar.setTime(dateTime);
+//            calendar.set(Calendar.HOUR_OF_DAY,hrs);
+//            calendar.set(Calendar.MINUTE,min);
+//            calendar.set(Calendar.HOUR_OF_DAY,19);
+
+            // Use AlarmManager to schedule the notification
+            AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+
+            // Generate a unique request code based on the memo
+            int requestCode = memo.hashCode(); // You can use a better way to generate a unique code
+
+            Intent notificationIntent = new Intent(this, NotificationReceiver.class);
+            notificationIntent.putExtra("memo", memo);
+
+            // Use a unique request code for PendingIntent
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(this, requestCode, notificationIntent, PendingIntent.FLAG_IMMUTABLE);
+            alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
+        } catch (ParseException e) {
+            e.printStackTrace();
         }
     }
 }
