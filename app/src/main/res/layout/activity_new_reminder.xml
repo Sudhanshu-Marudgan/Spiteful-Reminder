@@ -4,6 +4,89 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     tools:context=".NewReminder">
+
+    <EditText
+        android:id="@+id/ed1"
+        android:layout_width="match_parent"
+        android:layout_height="206dp"
+        android:background="@drawable/rounded_edit_text"
+        android:hint="Memo"
+        android:textSize="30sp"
+        android:padding="20dp"
+        android:textColorHint="@color/darkgrey"
+        />
+
+    <Switch
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/sw1"
+        android:text="Time"
+        android:textSize="20dp"
+        android:textColor="@color/white"
+        android:layout_below="@id/ed1"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/completely_rounded_button"
+        android:padding="10dp"
+        />
+
+    <Switch
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/sw2"
+        android:text="Date"
+        android:textSize="20dp"
+        android:textColor="@color/white"
+        android:layout_below="@id/sw1"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/completely_rounded_button"
+        android:padding="10dp"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bt1"
+        android:text="Category"
+        android:textAlignment="textStart"
+        android:textSize="19dp"
+        android:textColor="@color/white"
+        android:layout_below="@id/sw2"
+        android:layout_marginTop="25dp"
+        android:backgroundTint="@color/dimgrey"
+        android:padding="10dp"
+        android:onClick="category"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bt2"
+        android:text="Cancel"
+        android:textAlignment="textStart"
+        android:textSize="19dp"
+        android:textColor="@color/blue"
+        android:backgroundTint="@color/black"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="55dp"
+        android:layout_marginBottom="10dp"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bt3"
+        android:text="Save"
+        android:textAlignment="textStart"
+        android:textSize="19dp"
+        android:textColor="@color/blue"
+        android:backgroundTint="@color/black"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="55dp"
+        android:layout_marginBottom="10dp"
+        />
+
 
 </RelativeLayout>
