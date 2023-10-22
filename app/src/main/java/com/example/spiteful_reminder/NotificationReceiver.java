@@ -58,7 +58,7 @@ public class NotificationReceiver extends BroadcastReceiver {
                     .setContentTitle("Reminder")
                     .setContentText(reminderText);
 
-            notificationManager.notify(notificationId, builder.build());
+            notificationManager.notify(0, builder.build());
         } else {
             Toast.makeText(context, "HELL HAS COME!!!", Toast.LENGTH_SHORT).show();
             // Handle the case where notificationManager is null

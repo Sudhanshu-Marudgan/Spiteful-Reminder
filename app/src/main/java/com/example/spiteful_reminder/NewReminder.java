@@ -177,7 +177,7 @@ public class NewReminder extends AppCompatActivity {
             notificationIntent.putExtra("memo", memo);
 
             // Use a unique request code for PendingIntent
-            PendingIntent pendingIntent = PendingIntent.getBroadcast(this, requestCode, notificationIntent, PendingIntent.FLAG_IMMUTABLE);
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, notificationIntent, PendingIntent.FLAG_IMMUTABLE);
             alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
         } catch (ParseException e) {
             e.printStackTrace();
