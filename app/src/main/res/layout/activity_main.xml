@@ -4,10 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/black"
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/tv1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Reminders"
@@ -21,11 +23,13 @@
         android:id="@+id/menuButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="230dp"
+        android:backgroundTint="@color/black"
+        android:onClick="nav"
         android:text="☰"
-        android:background="@color/black"
-        android:layout_marginTop="220dp"
-        android:textSize="35px"
-        />
+        android:textColor="@color/white"
+        android:textSize="70px" />
+
 
     <Button
         android:id="@+id/addreminderbutton"
@@ -33,37 +37,41 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="260dp"
         android:layout_marginTop="220dp"
-        android:background="@color/black"
-        android:text="+"
-        android:textSize="60px"
+        android:backgroundTint="@color/black"
         android:onClick="addreminder"
-        />
+        android:text="+"
+        android:textColor="@color/white"
+        android:textSize="100px" />
 
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/searchView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:iconifiedByDefault="false"
+    <ImageButton
+        android:id="@+id/ib1"
+        android:layout_width="70dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="235dp"
+        android:layout_marginLeft="330dp"
+        android:src="@drawable/baseline_search_24"
+        android:background="@color/black"
         android:onClick="search"
-        android:layout_marginLeft="320dp"
-        android:layout_marginTop="222dp"/>
+        />
 
     <Button
-        android:id="@+id/sortbutton"
+        android:id="@+id/sort"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="350dp"
+        android:layout_marginLeft="390dp"
         android:layout_marginTop="220dp"
-        android:background="@color/black"
+        android:backgroundTint="@color/black"
+        android:textColor="@color/white"
         android:text=":"
-        android:textSize="60px" />
-
-    <ListView
-        android:layout_below="@+id/menuButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:textSize="100px"
         />
 
-
-
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/lv"
+        android:layout_below="@id/addreminderbutton"
+        android:dividerHeight="0dp"
+        android:divider="@color/trans"
+        />
 </RelativeLayout>

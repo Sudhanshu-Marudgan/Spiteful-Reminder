@@ -1,6 +1,12 @@
 package com.example.spiteful_reminder;
 
+
+import static com.example.spiteful_reminder.NewReminder.reference;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -10,6 +16,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -39,11 +56,41 @@ public class MainActivity extends AppCompatActivity {
             NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
             notificationManager.createNotificationChannel(channel);
 
+        ListView lv = findViewById(R.id.lv);
+        final ArrayList<String> list = new ArrayList<>();
+        final ArrayAdapter ad = new ArrayAdapter<String>(this,R.layout.reminder_item,R.id.tv,list);
+        lv.setAdapter(ad);
+        reference = FirebaseDatabase.getInstance().getReference().child("helper");
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot child : snapshot.getChildren()){
+                    helper info = child.getValue(helper.class);
+                    String txt = info.getMemo() + "\n" + info.getTime() + "\n" + info.getDate();
+                    list.add(txt);
+                }
+                ad.notifyDataSetChanged();
+            }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
+    //new reminder start
     public void addreminder(View view){
         Intent j = new Intent(MainActivity.this, NewReminder.class);
         startActivity(j);
     }
+    //new reminder end
+
+    //searchbar start
+    public void search(View view){
+        Intent i=new Intent(MainActivity.this,search.class);
+        startActivity(i);
+    }
+    //searchbar end
 }
+
