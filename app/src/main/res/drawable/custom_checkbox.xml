@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@android:id/secondaryProgress">
+        <clip>
+            <shape android:shape="rectangle">
+                <!-- Background color of the checkbox -->
+                <solid android:color="@android:color/transparent" />
+                <corners
+                    android:bottomRightRadius="30dp"
+                    android:bottomLeftRadius="30dp"
+                    android:topLeftRadius="30dp"
+                    android:topRightRadius="30dp"
+                    />
+            </shape>
+        </clip>
+    </item>
+    <item android:id="@android:id/progress">
+        <clip>
+            <shape android:shape="rectangle">
+                <!-- Background color of the checkbox when checked -->
+                <solid android:color="@android:color/transparent" />
+                <corners
+                    android:bottomRightRadius="30dp"
+                    android:bottomLeftRadius="30dp"
+                    android:topLeftRadius="30dp"
+                    android:topRightRadius="30dp"
+                    />
+            </shape>
+        </clip>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <!-- Checkbox border color -->
+            <stroke android:width="1dp" android:color="@android:color/darker_gray" />
+            <!-- Checkbox background color -->
+            <solid android:color="@android:color/transparent" />
+            <!-- Padding to the left side of the checkbox -->
+            <padding android:left="8dp" />
+        </shape>
+    </item>
+</layer-list>

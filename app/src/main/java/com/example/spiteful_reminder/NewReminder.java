@@ -13,12 +13,14 @@ import android.app.AlarmManager;
 import android.app.DatePickerDialog;
 import android.app.PendingIntent;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.icu.text.SimpleDateFormat;
 import android.icu.util.Calendar;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -45,6 +47,7 @@ import java.util.Date;
 public class NewReminder extends AppCompatActivity {
 
     public static String memo,date,time;
+    public static String status = "pending";
     public static int hrs,min;
     public static FirebaseDatabase db;
     public static DatabaseReference reference;
@@ -149,7 +152,7 @@ public class NewReminder extends AppCompatActivity {
             ed1.setError("This field cannot be empty");
         }
         else {
-            helper uh = new helper(memo, time, date);
+            helper uh = new helper(memo, time, date, status);
 
             reference.child(memo).setValue(uh).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
@@ -173,13 +176,16 @@ public class NewReminder extends AppCompatActivity {
         try {
             Date dateTime = dateFormat.parse(date + " " + time);
             calendar.setTime(dateTime);
+            long wait = calendar.getTimeInMillis();
+//            Toast.makeText(this, ""+wait, Toast.LENGTH_SHORT).show();
 
             // Use AlarmManager to schedule the notification
+
             AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-            Intent notificationIntent = new Intent(this, NotificationReceiver.class);
+            Intent notificationIntent = new Intent(this,NotificationReceiver.class);
             notificationIntent.putExtra("memo", memo); // Pass the memo to the receiver
             PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, notificationIntent, PendingIntent.FLAG_IMMUTABLE);
-            alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
+            alarmManager.setExact(AlarmManager.RTC_WAKEUP, wait , pendingIntent);
         } catch (ParseException e) {
             e.printStackTrace();
         }

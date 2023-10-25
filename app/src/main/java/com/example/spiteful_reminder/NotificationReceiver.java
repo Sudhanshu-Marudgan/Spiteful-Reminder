@@ -2,6 +2,7 @@ package com.example.spiteful_reminder;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -32,6 +33,7 @@ import androidx.core.app.NotificationCompat;
 public class NotificationReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
+//        Toast.makeText(context, "Broadcast Received!", Toast.LENGTH_SHORT).show();
         // Retrieve the reminder text from the intent or database
         String reminderText = intent.getStringExtra("memo"); // Assuming you passed the memo in the intent
 
@@ -54,11 +56,13 @@ public class NotificationReceiver extends BroadcastReceiver {
 
             // Create and show the notification
             NotificationCompat.Builder builder = new NotificationCompat.Builder(context, channelId)
-                    .setSmallIcon(R.drawable.ic_launcher_foreground)
+                    .setSmallIcon(R.drawable.applogo)
                     .setContentTitle("Reminder")
                     .setContentText(reminderText);
 
             notificationManager.notify(0, builder.build());
+
+
         } else {
             Toast.makeText(context, "HELL HAS COME!!!", Toast.LENGTH_SHORT).show();
             // Handle the case where notificationManager is null
