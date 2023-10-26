@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
         // Define a list to store keys
         List<String> itemKeys = new ArrayList<>();
 
-        final ArrayAdapter ad = new ArrayAdapter<String>(this,R.layout.reminder_item,R.id.tv,list){
+         final ArrayAdapter ad = new ArrayAdapter<String>(this,R.layout.reminder_item,R.id.tv,list){
             @NonNull
             @Override
             public View getView(final int position, @Nullable View convertView, @NonNull ViewGroup parent){
@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
                         if (isChecked){
                             String itemKey = itemKeys.get(position);
                             HashMap user = new HashMap<>();
-                            user.put("status","completed");
+                            user.put("status","Completed");
                             reference.child(itemKey).updateChildren(user).addOnCompleteListener(new OnCompleteListener() {
                                 @Override
                                 public void onComplete(@NonNull Task task) {
@@ -126,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
                 List<helper> pendingHelpers = new ArrayList<>();
                 for (DataSnapshot child : snapshot.getChildren()){
                     helper info = child.getValue(helper.class);
-                    if(info.getStatus().equals("pending")){
+                    if(info.getStatus().equals("Pending")){
                         String txt = info.getMemo();
 //                        String txt = info.getMemo() + "\n" + info.getTime() + "\n" + info.getDate();
                         list.add(txt);
@@ -200,6 +200,10 @@ public class MainActivity extends AppCompatActivity {
     }
     //searchbar end
 
+    public void nav(View view){
+        Intent i = new Intent(MainActivity.this, Navigation.class);
+        startActivity(i);
+    }
 
 }
 

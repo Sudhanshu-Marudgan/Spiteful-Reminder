@@ -60,7 +60,7 @@ public class NotificationReceiver extends BroadcastReceiver {
                     .setContentTitle("Reminder")
                     .setContentText(reminderText);
 
-            notificationManager.notify(0, builder.build());
+            notificationManager.notify(notificationId, builder.build());
 
 
         } else {

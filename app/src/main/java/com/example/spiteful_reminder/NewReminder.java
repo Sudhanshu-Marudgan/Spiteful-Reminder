@@ -47,7 +47,7 @@ import java.util.Date;
 public class NewReminder extends AppCompatActivity {
 
     public static String memo,date,time;
-    public static String status = "pending";
+    public static String status = "Pending";
     public static int hrs,min;
     public static FirebaseDatabase db;
     public static DatabaseReference reference;
@@ -180,11 +180,12 @@ public class NewReminder extends AppCompatActivity {
 //            Toast.makeText(this, ""+wait, Toast.LENGTH_SHORT).show();
 
             // Use AlarmManager to schedule the notification
+            int requestCode = memo.hashCode();
 
             AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
             Intent notificationIntent = new Intent(this,NotificationReceiver.class);
             notificationIntent.putExtra("memo", memo); // Pass the memo to the receiver
-            PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, notificationIntent, PendingIntent.FLAG_IMMUTABLE);
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(this, requestCode, notificationIntent, PendingIntent.FLAG_IMMUTABLE);
             alarmManager.setExact(AlarmManager.RTC_WAKEUP, wait , pendingIntent);
         } catch (ParseException e) {
             e.printStackTrace();
