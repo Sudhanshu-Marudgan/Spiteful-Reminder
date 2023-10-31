@@ -5,13 +5,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     tools:context=".search">
+
+    <TextView
+        android:id="@+id/tv1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Search"
+        android:textSize="35sp"
+        android:textColor="@color/white"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        />
 
     <SearchView
         android:id="@+id/sv1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:queryHint="Search"
+        android:layout_below="@id/tv1"
+        android:layout_marginTop="100dp"
         android:iconifiedByDefault="true"/>
 
     <ListView

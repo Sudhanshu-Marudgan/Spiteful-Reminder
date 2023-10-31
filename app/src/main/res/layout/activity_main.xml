@@ -21,6 +21,18 @@
         />
 
     <Button
+        android:id="@+id/addreminderbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="315dp"
+        android:layout_marginTop="217dp"
+        android:backgroundTint="@color/black"
+        android:onClick="addreminder"
+        android:text="+"
+        android:textColor="@color/white"
+        android:textSize="100px" />
+
+    <Button
         android:id="@+id/menuButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -32,39 +44,17 @@
         android:textSize="70px" />
 
 
-    <Button
-        android:id="@+id/addreminderbutton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="260dp"
-        android:layout_marginTop="220dp"
-        android:backgroundTint="@color/black"
-        android:onClick="addreminder"
-        android:text="+"
-        android:textColor="@color/white"
-        android:textSize="100px" />
+
 
     <ImageButton
         android:id="@+id/ib1"
         android:layout_width="70dp"
         android:layout_height="50dp"
         android:layout_marginTop="235dp"
-        android:layout_marginLeft="330dp"
+        android:layout_alignParentRight="true"
         android:src="@drawable/baseline_search_24"
         android:background="@color/black"
         android:onClick="search"
-        />
-
-    <Button
-        android:id="@+id/sort"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="390dp"
-        android:layout_marginTop="220dp"
-        android:backgroundTint="@color/black"
-        android:textColor="@color/white"
-        android:text=":"
-        android:textSize="100px"
         />
 
     <ListView

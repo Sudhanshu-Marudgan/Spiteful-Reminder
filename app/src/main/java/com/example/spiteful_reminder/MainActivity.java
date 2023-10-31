@@ -82,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
             notificationManager.createNotificationChannel(channel);
 
         ListView lv = findViewById(R.id.lv);
+
         final ArrayList<String> list = new ArrayList<>();
         // Define a list to store keys
         List<String> itemKeys = new ArrayList<>();
@@ -92,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
             public View getView(final int position, @Nullable View convertView, @NonNull ViewGroup parent){
                 View view = super.getView(position,convertView,parent);
                 final CheckBox checkBox = view.findViewById(R.id.tv);
+
 
                 checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                     @Override
@@ -124,6 +126,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 List<helper> pendingHelpers = new ArrayList<>();
+                list.clear();
                 for (DataSnapshot child : snapshot.getChildren()){
                     helper info = child.getValue(helper.class);
                     if(info.getStatus().equals("Pending")){
@@ -131,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
 //                        String txt = info.getMemo() + "\n" + info.getTime() + "\n" + info.getDate();
                         list.add(txt);
                         itemKeys.add(child.getKey());
-                        pendingHelpers.add(info);
+                        pendingHelpers.add(info);}}
 
                         //sorting code (start)
                         Collections.sort(pendingHelpers, new Comparator<helper>() {
@@ -146,7 +149,6 @@ public class MainActivity extends AppCompatActivity {
                                 } catch (ParseException e) {
                                     e.printStackTrace();
                                     Log.e("DateParsingError", "Error parsing date: " + e.getMessage());
-                                    Toast.makeText(MainActivity.this, "Parsing Error!", Toast.LENGTH_SHORT).show();
                                     return 0; // Handle parsing error
                                 }
 
@@ -155,23 +157,18 @@ public class MainActivity extends AppCompatActivity {
                             }
                         });
 
-                        list.clear();
-                        itemKeys.clear();
-
-                        // Re-add the sorted items to your list and update the keys
-                        for (helper helper : pendingHelpers) {
-                            txt = helper.getMemo();
-                            list.add(txt);
-                            itemKeys.add(child.getKey());
-                        }
+//                        list.clear();
+//                        itemKeys.clear();
+//
+//                        // Re-add the sorted items to your list and update the keys
+//                        for (helper helper : pendingHelpers) {
+//                            txt = helper.getMemo() ;
+//                            list.add(txt);
+//                            itemKeys.add(child.getKey());
+//                        }
                         //sorting code (Ends)
-                    }
-                    else{
 
-                    }
-
-                }
-                // Create a custom comparator to sort by date and time
+                 //Create a custom comparator to sort by date and time
 
                 ad.notifyDataSetChanged();
             }

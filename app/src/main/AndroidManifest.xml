@@ -21,6 +21,9 @@
         android:theme="@style/Theme.SpitefulReminder"
         tools:targetApi="31">
         <activity
+            android:name=".editview"
+            android:exported="false" />
+        <activity
             android:name=".Completed"
             android:exported="false" />
         <activity
@@ -42,8 +45,14 @@
             android:name=".search"
             android:exported="false" />
         <activity
-            android:name=".splashactivity"
-            android:exported="false" />
+            android:name=".SplashActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".Category"
             android:exported="false" />
@@ -52,13 +61,7 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="false" />
     </application>
 
 </manifest>

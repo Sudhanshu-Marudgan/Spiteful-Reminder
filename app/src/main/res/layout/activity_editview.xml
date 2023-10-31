@@ -5,20 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    tools:context=".NewReminder">
+    tools:context=".editview">
 
-    <EditText
+    <TextView
         android:id="@+id/ed1"
         android:layout_width="match_parent"
-        android:layout_height="206dp"
+        android:layout_height="110dp"
         android:background="@drawable/rounded_edit_text"
-        android:hint="Memo"
-        android:textSize="30sp"
-        android:padding="20dp"
-        android:textColorHint="@color/darkgrey"
-        />
+        android:padding="30dp"
+        android:text="Memo"
+        android:textColor="@color/white"
+        android:textSize="30sp" />
 
-    <Switch
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/sw1"
@@ -32,7 +31,7 @@
         android:onClick="time"
         />
 
-    <Switch
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/sw2"
@@ -46,51 +45,37 @@
         android:onClick="date"
         />
 
-<!--    <Button-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:id="@+id/bt1"-->
-<!--        android:text="Category"-->
-<!--        android:textAlignment="textStart"-->
-<!--        android:textSize="19dp"-->
-<!--        android:textColor="@color/white"-->
-<!--        android:layout_below="@id/sw2"-->
-<!--        android:layout_marginTop="25dp"-->
-<!--        android:backgroundTint="@color/dimgrey"-->
-<!--        android:padding="20dp"-->
-<!--        android:onClick="category"-->
-<!--        />-->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/sw3"
+        android:text="Status"
+        android:textSize="20dp"
+        android:textColor="@color/white"
+        android:layout_below="@id/sw2"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/completely_rounded_button"
+        android:padding="20dp"
+        android:onClick="date"
+        />
+
+
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/bt2"
-        android:text="Cancel"
+        android:text="Done"
         android:textAlignment="textStart"
         android:textSize="19dp"
         android:textColor="@color/blue"
         android:backgroundTint="@color/black"
         android:layout_alignParentBottom="true"
-        android:layout_marginLeft="55dp"
+        android:layout_centerHorizontal="true"
         android:layout_marginBottom="10dp"
-        android:onClick="cancel"
+        android:onClick="done"
         />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/bt3"
-        android:text="Save"
-        android:textAlignment="textStart"
-        android:textSize="19dp"
-        android:textColor="@color/blue"
-        android:backgroundTint="@color/black"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginRight="55dp"
-        android:layout_marginBottom="10dp"
-        android:onClick="save"
-        />
 
 
 

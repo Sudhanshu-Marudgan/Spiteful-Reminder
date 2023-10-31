@@ -66,7 +66,7 @@ public class NewReminder extends AppCompatActivity {
             }
         }
 
-        //Code to make the status bar black (Start)
+      //Code to make the status bar black (Start)
         Window window = this.getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
