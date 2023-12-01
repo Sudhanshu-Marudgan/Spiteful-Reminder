@@ -11,13 +11,6 @@ Well, it's just a reminder app. It was developed in Android Studio. It borrows h
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
-- [Usage](#usage)
-- [Features](#features)
-- [Development](#development)
-  - [Built With](#built-with)
-  - [Contributing](#contributing)
-- [License](#license)
-- [Acknowledgements](#acknowledgements)
 
 ## Getting Started
 
