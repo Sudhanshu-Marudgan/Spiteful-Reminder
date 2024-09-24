@@ -47,9 +47,9 @@ This is a simple reminder application that integrates with Firebase Realtime Dat
 
 ## How It Works
 1. Fetching Reminders:
-  - The app listens to the helper node in the Firebase Realtime Database and fetches all reminders with the status "Pending".
+  - The app listens to the `helper` node in the Firebase Realtime Database and fetches all reminders with the status "Pending".
 2.  Displaying Reminders:
-   - The reminders are displayed in a ListView, sorted by date and time using a custom comparator.
+   - The reminders are displayed in a `ListView`, sorted by date and time using a custom comparator.
 3.  Marking as Completed:
    - When the user checks the checkbox next to a reminder, its status is updated in Firebase to "Completed", and the app refreshes the view.
 4.  Sorting:
@@ -57,9 +57,9 @@ This is a simple reminder application that integrates with Firebase Realtime Dat
 
 
 ## Key Classes
-- MainActivity.java: The main activity that handles fetching reminders from Firebase, displaying them in a ListView, and marking them as completed.
-- helper.java: Model class that maps to a reminder object in Firebase.
-- HelperWithKey.java: Custom class to hold both the reminder (helper object) and its Firebase key.
+- `MainActivity.java`: The main activity that handles fetching reminders from Firebase, displaying them in a ListView, and marking them as completed.
+- `helper.java`: Model class that maps to a reminder object in Firebase.
+- `HelperWithKey.java`: Custom class to hold both the reminder (helper object) and its Firebase key.
 
 
 ## Installation
@@ -75,7 +75,7 @@ $ git clone https://github.com/Sudhanshu-Marudgan/Spiteful-Reminder.git
 ### Contributing
 Pull requests are welcome! If you'd like to contribute to this project, please fork the repository and submit a pull request.
 1. Fork the repository.
-2. Create a new branch (git checkout -b feature-branch).
-3. Commit your changes (git commit -am 'Add new feature').
-4. Push to the branch (git push origin feature-branch).
+2. Create a new branch (`git checkout -b feature-branch`).
+3. Commit your changes (`git commit -am 'Add new feature'`).
+4. Push to the branch (`git push origin feature-branch`).
 5. Create a new Pull Request.
