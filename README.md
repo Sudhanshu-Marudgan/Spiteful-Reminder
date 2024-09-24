@@ -16,6 +16,11 @@ This is a simple reminder application that integrates with Firebase Realtime Dat
 - Custom notification channel for notifications.
 
 
+## Screenshots
+
+<p align="center"> <img src="Screenshots.png"> </p>
+
+
 ## Table of Contents
 
 - [Getting Started](#getting-started)
@@ -37,6 +42,7 @@ This is a simple reminder application that integrates with Firebase Realtime Dat
 
 
 ## Firebase Setup
+
 1. Go to the [Firebase Console](https://console.firebase.google.com/).
 2. Create a new project or use an existing one.
 3. Add Firebase to your Android app by registering the app and downloading the `google-services.json` file.
@@ -46,6 +52,7 @@ This is a simple reminder application that integrates with Firebase Realtime Dat
 
 
 ## How It Works
+
 1. Fetching Reminders:
   - The app listens to the `helper` node in the Firebase Realtime Database and fetches all reminders with the status "Pending".
 2.  Displaying Reminders:
@@ -57,6 +64,7 @@ This is a simple reminder application that integrates with Firebase Realtime Dat
 
 
 ## Key Classes
+
 - `MainActivity.java`: The main activity that handles fetching reminders from Firebase, displaying them in a ListView, and marking them as completed.
 - `helper.java`: Model class that maps to a reminder object in Firebase.
 - `HelperWithKey.java`: Custom class to hold both the reminder (helper object) and its Firebase key.
@@ -73,6 +81,7 @@ $ git clone https://github.com/Sudhanshu-Marudgan/Spiteful-Reminder.git
 
 
 ### Contributing
+
 Pull requests are welcome! If you'd like to contribute to this project, please fork the repository and submit a pull request.
 1. Fork the repository.
 2. Create a new branch (`git checkout -b feature-branch`).
